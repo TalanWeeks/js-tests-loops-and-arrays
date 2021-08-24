@@ -4,6 +4,13 @@
 // output: ['is', 'a', 'split', 'sentence.', 'This']
 
 function rearranger(arr) {
+
+    console.log(arr)
+    arr.push(arr[0])
+    arr.shift()
+    console.log(arr)
+    return arr
+
 }
 
 
@@ -16,6 +23,8 @@ function rearranger(arr) {
 // output: 42
 
 function largestNum(arr) {
+    let maxNumber = Math.max(...arr)
+    return maxNumber
 }
 
 
@@ -27,7 +36,15 @@ function largestNum(arr) {
 // input:  [4, 2, 1, 7]
 // output: [16, 8, 4, 28]
 
-function elemsTimesLength(arr) {
+function elemsTimesLength(arr) {  
+       
+    let arrayElem = []
+    for (let i = 0; i < arr.length; i++) {
+        const element = arr[i]*arr.length;  
+        arrayElem.push(element)
+    }
+    return arrayElem
+
 }
 
 
@@ -63,9 +80,15 @@ let flights = [{
 
 function flightCost(destination, firstClass) {
     //***hint: use the find method***
-
-}
-
+    
+   let flightCost = flights.find(flights => flights.to === destination.toUpperCase())  
+        if (firstClass == false) {
+            
+            return flightCost.prices.standard
+        } else {
+            return flightCost.prices.firstClass
+        }   
+    }
 
 // ------------------------------------------
 
@@ -84,6 +107,13 @@ let staff = [{ id: 1, name: 'Jon' }, { id: 2, name: 'Yuli' }, { id: 21, name: 'P
 { id: 881, name: 'Paul' }, { id: 0, name: 'Jon' }, { id: 999, name: 'Timma' }]
 
 function findById(id) {
+    let personId = staff.find(staff => staff.id === id)
+    let errorMessage = {error: "No user with that Id"};
+    if (personId == null) {
+        
+        return errorMessage
+    }
+    return personId
 
 }
 
@@ -111,4 +141,11 @@ let theBand = {
 }
 
 function bandMemberDetails(name) {
-}
+   
+    let memberName = theBand.members.find(m => m.name.includes(name))
+
+    return memberName.name + ' ' + "is in the band and plays the" + ' ' + memberName.instrument
+
+    
+    }
+
